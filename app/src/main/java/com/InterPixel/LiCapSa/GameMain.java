@@ -25,6 +25,38 @@ public class GameMain {
             suit = selSuit;
             number = cardNumber;
         }
+        private int getNumber(){
+            return number;
+        }
+        private int getSuit(){
+            int suitNumber;
+            if (suit == Suits.Diamonds) suitNumber = 1;
+            else if (suit == Suits.Clubs) suitNumber = 2;
+            else if (suit == Suits.Hearts) suitNumber = 3;
+            else suitNumber = 4;
+            return suitNumber;
+        }
+    }
+
+    //Comparator (Things needed to sort)
+    class CompareLogicNumber implements Comparator<Cards> {
+        public int compare(Cards o1, Cards o2) {
+            int temp = ((Integer)o1.getNumber()).compareTo(o2.getNumber());
+            //if compared numbers are the same
+            if (temp == 0){
+                temp = o1.getSuit() - o2.getSuit();
+            }
+            return temp;
+        }
+    }
+    class CompareLogicSuit implements  Comparator<Cards>{
+        public int compare (Cards o1, Cards o2){
+            int temp = o1.getSuit() - o2.getSuit();
+            if (temp == 0){
+                temp = ((Integer) (o1.getNumber())).compareTo(o2.getNumber());
+            }
+            return temp;
+        }
     }
 
     //kartu di tangan orangnya
@@ -72,7 +104,7 @@ public class GameMain {
             cardNumber -= 13;
             cardSuit++;
         }
-        System.out.println(cardNumber + " " + cardSuit);
+
         //convert angka jadi suit
         switch (cardSuit){
             case 1:
@@ -92,14 +124,31 @@ public class GameMain {
     public static void main(String[] args){
         GameMain o = new GameMain();
         o.giveCards();
+        o.onSortBySuitButtonPressed();
         for (int i = 0; i < o.card.size(); i++) {
             System.out.print("Suit: " + o.card.get(i).suit + " Number: " + o.card.get(i).number + "\n");
         }
     }
 
-    void sort(){
+    void onSortByNumberButtonPressed(){
+        Collections.sort(card, new GameMain.CompareLogicNumber());
+    }
+    void onSortBySuitButtonPressed(){
+        Collections.sort(card, new GameMain.CompareLogicSuit());
+    }
+    void onSortByGroupButtonPressed(){
 
     }
+    void checkTris(){
+
+    }
+    boolean validPair(Cards o1, Cards o2){
+        if (o1.suit == o2.suit){
+            return true;
+        }
+        return false;
+    }
+
 
     void changePos(byte position, byte selectedCard){
     }
