@@ -72,7 +72,6 @@ public class GameActivity extends Activity {
         slot[13].tg = (ToggleButton) findViewById(R.id.slot13);
 
         init();
-        GameMain.main(new String[]{"s", "a"});
     }
 
     void init(){
