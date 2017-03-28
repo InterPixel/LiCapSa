@@ -2,33 +2,26 @@ package com.InterPixel.LiCapSa;
 import java.util.*;
 
 public class GameMain {
-    /*TODO
-    AI = Stanley
-    Networking = ?
-    Gambar/Asset(Kartu dkk) = Arya
-    Main game mechanic = Julius
-    UI = JE
-     */
 
 	/*
-	 * Ace jadi 13
-	 */
+	Ace jadi 1
+	*/
 
     //Suit punya isi diamond, club, heart, spade
-    private enum Suits{Diamonds, Clubs, Hearts, Spades}
+    enum Suits{Diamonds, Clubs, Hearts, Spades}
 
     //definer kartunya
-    private class Cards{
+    class Cards{
         Suits suit;
         byte number;
-        private Cards(Suits selSuit, byte cardNumber){
+        Cards(Suits selSuit, byte cardNumber){
             suit = selSuit;
             number = cardNumber;
         }
-        private int getNumber(){
+        int getNumber(){
             return number;
         }
-        private int getSuit(){
+        int getSuit(){
             int suitNumber;
             if (suit == Suits.Diamonds) suitNumber = 1;
             else if (suit == Suits.Clubs) suitNumber = 2;
@@ -38,34 +31,13 @@ public class GameMain {
         }
     }
 
-    //Comparator (Things needed to sort)
-    class CompareLogicNumber implements Comparator<Cards> {
-        public int compare(Cards o1, Cards o2) {
-            int temp = ((Integer)o1.getNumber()).compareTo(o2.getNumber());
-            //if compared numbers are the same
-            if (temp == 0){
-                temp = o1.getSuit() - o2.getSuit();
-            }
-            return temp;
-        }
-    }
-    class CompareLogicSuit implements  Comparator<Cards>{
-        public int compare (Cards o1, Cards o2){
-            int temp = o1.getSuit() - o2.getSuit();
-            if (temp == 0){
-                temp = ((Integer) (o1.getNumber())).compareTo(o2.getNumber());
-            }
-            return temp;
-        }
-    }
-
     //kartu di tangan orangnya
-    private List<Cards> card = new ArrayList<>();
+    List<Cards> card = new ArrayList<>();
 
     //angka yang bakal di bagiin ke orang
-    private List<Integer> number = new ArrayList<>();
+    List<Integer> number = new ArrayList<>();
 
-    private void giveCards(){
+    void giveCards(){
         //populate list number
         //males gw :P (masalah di int i)
         {
@@ -77,17 +49,17 @@ public class GameMain {
         }
         //ngasih angka ke player"nya
         for (byte i = 1; i <= 13; i++){
-            for (byte j = 1; j <= 4; j++){
+            for (byte a = 1; a <= 4; a++){
                 //output angka random sesuai size listnya
                 int randIndexNumber = (int)Math.floor(Math.random()*number.size());
                 //ngasih angka ke playernya
-                givePlayer (j, number.get(randIndexNumber).byteValue());
+                givePlayer (a, number.get(randIndexNumber).byteValue());
                 number.remove(randIndexNumber);
             }
         }
     }
     //handle player mana di kasih kemana
-    private void givePlayer(byte player, byte cardNumber){
+    void givePlayer(byte player, byte cardNumber){
         switch (player) {
             case 1:
                 recieveCard(cardNumber);
@@ -98,7 +70,7 @@ public class GameMain {
         }
     }
     //ngehandle kartu yang di dapetin
-    private void recieveCard(byte cardNumber){
+    void recieveCard(byte cardNumber){
         byte cardSuit = 1;
         while (cardNumber>13){
             cardNumber -= 13;
@@ -123,33 +95,13 @@ public class GameMain {
     }
     public static void main(String[] args){
         GameMain o = new GameMain();
+        CardSort oSort = new CardSort();
         o.giveCards();
-        o.onSortBySuitButtonPressed();
+        //o.card = oSort.onSortByNumberButtonPressed(o.card);
+        oSort.checkGroups(o.card);
         for (int i = 0; i < o.card.size(); i++) {
-            System.out.print("Suit: " + o.card.get(i).suit + " Number: " + o.card.get(i).number + "\n");
+            System.out.print("Suit: " + o.card.get(i).suit + " \tNumber: " + o.card.get(i).number + "\n");
         }
-    }
 
-    void onSortByNumberButtonPressed(){
-        Collections.sort(card, new GameMain.CompareLogicNumber());
-    }
-    void onSortBySuitButtonPressed(){
-        Collections.sort(card, new GameMain.CompareLogicSuit());
-    }
-    void onSortByGroupButtonPressed(){
-
-    }
-    void checkTris(){
-
-    }
-    boolean validPair(Cards o1, Cards o2){
-        if (o1.suit == o2.suit){
-            return true;
-        }
-        return false;
-    }
-
-
-    void changePos(byte position, byte selectedCard){
     }
 }
