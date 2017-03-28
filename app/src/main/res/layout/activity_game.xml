@@ -1,9 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="#0099cc"
-             tools:context="com.InterPixel.LiCapSa.GameActivity">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="#0099cc"
+                                             tools:context="com.InterPixel.LiCapSa.GameActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -12,4 +13,210 @@
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
 
-</FrameLayout>
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="187dp"
+        android:layout_height="25dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="26dp"
+        android:layout_marginLeft="264dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="264dp"/>
+
+    <Chronometer
+        android:id="@+id/chronometer2"
+        android:layout_width="95dp"
+        android:layout_height="53dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.23"
+        android:layout_marginRight="157dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="157dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot1"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        android:layout_marginLeft="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot2"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot3"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="100dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot4"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="150dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot5"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="200dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot6"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="250dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot7"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        android:layout_marginLeft="300dp"
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot8"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="350dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot9"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        android:layout_marginLeft="400dp"
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot10"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="450dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot11"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="500dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot12"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="550dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <ToggleButton
+        android:id="@+id/slot13"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="600dp"
+        android:background="@drawable/ace_of_clubs"
+        android:onClick="onSlotClicked"
+        android:text="ToggleButton"
+        android:textOff=" "
+        android:textOn=" "
+        app:layout_constraintLeft_toLeftOf="@+id/slot1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+</android.support.constraint.ConstraintLayout>

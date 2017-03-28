@@ -1,4 +1,5 @@
 package com.InterPixel.LiCapSa;
+
 import java.util.*;
 
 public class GameMain {
@@ -15,10 +16,10 @@ public class GameMain {
 	 */
 
     //Suit punya isi diamond, club, heart, spade
-    private enum Suits{Diamonds, Clubs, Hearts, Spades}
+    public enum Suits{Diamonds, Clubs, Hearts, Spades}
 
     //definer kartunya
-    private class Cards{
+    public class Cards{
         Suits suit;
         byte number;
         private Cards(Suits selSuit, byte cardNumber){
