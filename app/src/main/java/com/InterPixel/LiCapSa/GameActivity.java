@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.ToggleButton;
 
 import com.InterPixel.LiCapSa.GameMain.Suits;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
 
 import java.util.List;
 
@@ -72,6 +74,12 @@ public class GameActivity extends Activity {
         slot[13].tg = (ToggleButton) findViewById(R.id.slot13);
 
         init();
+
+        GameMain.main(new String[]{"ASD", "ASDW"});
+
+        //PlayGames.fap().initialize();
+        //PlayGames.fap().SignIn();
+
     }
 
     void init(){
@@ -81,19 +89,28 @@ public class GameActivity extends Activity {
         public int id;
         public ToggleButton tg;
         public boolean haveCard;
+        public boolean isSelected = false;
         public Suits suit;
         public byte number;
     }
 
-    public void onSlotClicked(View slot){
+    public void onSlotClicked(View slotSel){
+        int currentSlot = 0;
+        for (int i = 1; i < 14; i++){
+            if ( slotSel.getId() == slot[i].id ){
+                currentSlot = i;
+                break;
+            }
+        }
 
-        if(((ToggleButton) slot).isChecked()) {
+        if(((ToggleButton) slotSel).isChecked()) {
             // handle toggle on
-            slot.setBackgroundResource(whatCardShouldBeHere(slot.getId()));
+            slotSel.setTranslationY(-60f);
+            slot[currentSlot].isSelected = true;
         } else {
             // handle toggle off
-            slot.setBackgroundResource(whatCardShouldBeHere(slot.getId()));
-
+            slotSel.setTranslationY(0f);
+            slot[currentSlot].isSelected = false;
         }
     }
 
@@ -234,10 +251,14 @@ public class GameActivity extends Activity {
     }
 
     public void assignCard(List<GameMain.Cards> cardsInHand){
-        for(int i = 0; i < 13; i++){
+        for(int i = 0; i < cardsInHand.size() ; i++){
             slot[i+1].suit = cardsInHand.get(i).suit;
             slot[i+1].number = cardsInHand.get(i).number;
             slot[i+1].tg.setBackgroundResource(whatCardShouldBeHere(slot[i+1].id));
+        }
+
+        for (int i = 13; i > cardsInHand.size(); i--){
+            slot[i].tg.setBackgroundResource(R.drawable.red_joker);
         }
     }
 
