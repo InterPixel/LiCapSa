@@ -122,10 +122,12 @@ public class GameMain {
                 break;
         }
     }
+
     public static void main(String[] args){
         GameMain o = new GameMain();
         o.giveCards();
         o.onSortBySuitButtonPressed();
+        GameActivity.getObject().assignCard(o.card);
         for (int i = 0; i < o.card.size(); i++) {
             System.out.print("Suit: " + o.card.get(i).suit + " Number: " + o.card.get(i).number + "\n");
         }

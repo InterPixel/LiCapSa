@@ -16,7 +16,18 @@ import java.util.List;
 
 public class GameActivity extends Activity {
 
-    public slotClass[] slot;
+    private static GameActivity Instance = null;
+
+    public static GameActivity getObject(){
+        if ( Instance != null ){
+            return Instance;
+        }else{
+            Instance = new GameActivity();
+            return Instance;
+        }
+    }
+
+    public static slotClass[] slot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +37,11 @@ public class GameActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
 
-        init();
-
         slot = new slotClass[14];
+
+        for (int i = 0; i < slot.length; i++){
+            slot[i] = new slotClass();
+        }
 
         slot[1].id = findViewById(R.id.slot1).getId();
         slot[2].id = findViewById(R.id.slot2).getId();
@@ -43,14 +56,31 @@ public class GameActivity extends Activity {
         slot[11].id = findViewById(R.id.slot11).getId();
         slot[12].id = findViewById(R.id.slot12).getId();
         slot[13].id = findViewById(R.id.slot13).getId();
+
+        slot[1].tg = (ToggleButton) findViewById(R.id.slot1);
+        slot[2].tg = (ToggleButton) findViewById(R.id.slot2);
+        slot[3].tg = (ToggleButton) findViewById(R.id.slot3);
+        slot[4].tg = (ToggleButton) findViewById(R.id.slot4);
+        slot[5].tg = (ToggleButton) findViewById(R.id.slot5);
+        slot[6].tg = (ToggleButton) findViewById(R.id.slot6);
+        slot[7].tg = (ToggleButton) findViewById(R.id.slot7);
+        slot[8].tg = (ToggleButton) findViewById(R.id.slot8);
+        slot[9].tg = (ToggleButton) findViewById(R.id.slot9);
+        slot[10].tg = (ToggleButton) findViewById(R.id.slot10);
+        slot[11].tg = (ToggleButton) findViewById(R.id.slot11);
+        slot[12].tg = (ToggleButton) findViewById(R.id.slot12);
+        slot[13].tg = (ToggleButton) findViewById(R.id.slot13);
+
+        init();
+        GameMain.main(new String[]{"s", "a"});
     }
 
     void init(){
-
     }
 
     private class slotClass {
         public int id;
+        public ToggleButton tg;
         public boolean haveCard;
         public Suits suit;
         public byte number;
@@ -58,19 +88,26 @@ public class GameActivity extends Activity {
 
     public void onSlotClicked(View slot){
 
-        int currentslot = slot.getId();
-
         if(((ToggleButton) slot).isChecked()) {
             // handle toggle on
-            slot.setBackgroundResource(whatCardShouldBeHere(currentslot));
+            slot.setBackgroundResource(whatCardShouldBeHere(slot.getId()));
         } else {
             // handle toggle off
+            slot.setBackgroundResource(whatCardShouldBeHere(slot.getId()));
 
         }
     }
 
 
-    private int whatCardShouldBeHere(int slotNumber){
+    private int whatCardShouldBeHere(int slotId){
+
+        int slotNumber = 0;
+
+        for (int i = 0; i < slot.length; i++){
+            if(slotId == slot[i].id){
+                slotNumber = i;
+            }
+        }
 
         switch (slot[slotNumber].suit){
             case Diamonds:
@@ -198,7 +235,11 @@ public class GameActivity extends Activity {
     }
 
     public void assignCard(List<GameMain.Cards> cardsInHand){
-
+        for(int i = 0; i < 13; i++){
+            slot[i+1].suit = cardsInHand.get(i).suit;
+            slot[i+1].number = cardsInHand.get(i).number;
+            slot[i+1].tg.setBackgroundResource(whatCardShouldBeHere(slot[i+1].id));
+        }
     }
 
 }
