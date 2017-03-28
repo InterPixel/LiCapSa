@@ -1,4 +1,5 @@
 package com.InterPixel.LiCapSa;
+
 import java.util.*;
 
 public class GameMain {
@@ -8,10 +9,10 @@ public class GameMain {
 	*/
 
     //Suit punya isi diamond, club, heart, spade
-    enum Suits{Diamonds, Clubs, Hearts, Spades}
+    public enum Suits{Diamonds, Clubs, Hearts, Spades}
 
     //definer kartunya
-    class Cards{
+    public class Cards{
         Suits suit;
         byte number;
         Cards(Suits selSuit, byte cardNumber){
@@ -93,12 +94,14 @@ public class GameMain {
                 break;
         }
     }
+
     public static void main(String[] args){
         GameMain o = new GameMain();
         CardSort oSort = new CardSort();
         o.giveCards();
-        //o.card = oSort.onSortByNumberButtonPressed(o.card);
+        o.card = oSort.onSortByNumberButtonPressed(o.card);
         oSort.checkGroups(o.card);
+        GameActivity.getObject().assignCard(o.card);
         for (int i = 0; i < o.card.size(); i++) {
             System.out.print("Suit: " + o.card.get(i).suit + " \tNumber: " + o.card.get(i).number + "\n");
         }

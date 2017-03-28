@@ -36,7 +36,7 @@ public class CardSort extends GameMain {
     }
 
     //fucking hell
-    void onSortByGroupButtonPressed(){
+    void onSortByGroupButtonPressed(List<Cards> card){
         //cari dari yang paling gede
         //cari kartu lain biar jadi complete kartu 5
         //kartu yang paling kecil jadi pengcompletenya
@@ -46,14 +46,20 @@ public class CardSort extends GameMain {
         //kalau ga ketemu completer jadi value terendah tetep taro di kiri
         byte sortedIndex = 0;
         //putFours
-
+        for (int i = 0; i < fours.size(); i++) {
+            for (int a = 0; a < 4; a++) {
+                byte indexToBeSwaped = fours.get(i).get(a);
+                Collections.swap(card, a, indexToBeSwaped);
+            }
+        }
     }
 
     //check kartu di tangan ada yang sama 4 biji ato ga
+    List<List<Byte>> pairs = new ArrayList<>();
+    List<List<Byte>> tris = new ArrayList<>();
+    List<List<Byte>> fours = new ArrayList<>();
+
     void checkGroups(List<Cards> card){
-        List<List<Byte>> pairs = new ArrayList<>();
-        List<List<Byte>> tris = new ArrayList<>();
-        List<List<Byte>> fours = new ArrayList<>();
 
         //The Whole Fucking Logic
         label1 : for (byte i = 0; i < card.size(); i++){
