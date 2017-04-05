@@ -63,12 +63,12 @@ public class GameMain {
     void givePlayer(byte player, byte cardNumber){
         switch (player) {
             case 1:
-                recieveCard(cardNumber);
+    recieveCard(cardNumber);
                 break;
             case 2:
-                //kirim angkanya ke device yang lain
-                break;
-        }
+                    //kirim angkanya ke device yang lain
+                    break;
+}
     }
     //ngehandle kartu yang di dapetin
     void recieveCard(byte cardNumber){

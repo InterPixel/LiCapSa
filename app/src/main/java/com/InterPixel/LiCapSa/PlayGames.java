@@ -176,7 +176,7 @@ public class PlayGames extends Activity implements GoogleApiClient.ConnectionCal
     public void onActivityResult(int requestCode, int responseCode, Intent resultIntent){
 
         RoomConfig.Builder roomConfigBuilder;
-
+        debug("terpanggi");
         switch (requestCode){
             case RC_SELECT_PLAYERS:
 
@@ -242,13 +242,13 @@ public class PlayGames extends Activity implements GoogleApiClient.ConnectionCal
             case RC_WAITING_ROOM:
                 break;
 
-            case RC_SIGN_IN:
-                debug("Resolution ends");
-                if(responseCode == Activity.RESULT_OK){
-                    debug("Attempt to reconnect again");
-                    apiClient.connect();
-                }
-                break;
+//            case RC_SIGN_IN:
+//                debug("Resolution ends");
+//                if(responseCode == Activity.RESULT_OK){
+//                    debug("Attempt to reconnect again");
+//                    apiClient.connect();
+//                }
+//                break;
         }
     }
 
