@@ -12,7 +12,7 @@ public class GameMain {
     public enum Suits{Diamonds, Clubs, Hearts, Spades}
 
     //definer kartunya
-    public class Cards{
+    public static class Cards{
         Suits suit;
         byte number;
         Cards(Suits selSuit, byte cardNumber){
