@@ -12,7 +12,7 @@ public class GameMain {
     public enum Suits{Diamonds, Clubs, Hearts, Spades}
 
     //definer kartunya
-    public class Cards{
+    public static class Cards{
         Suits suit;
         byte number;
         Cards(Suits selSuit, byte cardNumber){
@@ -63,12 +63,12 @@ public class GameMain {
     void givePlayer(byte player, byte cardNumber){
         switch (player) {
             case 1:
-                recieveCard(cardNumber);
+    recieveCard(cardNumber);
                 break;
             case 2:
-                //kirim angkanya ke device yang lain
-                break;
-        }
+                    //kirim angkanya ke device yang lain
+                    break;
+}
     }
     //ngehandle kartu yang di dapetin
     void recieveCard(byte cardNumber){

@@ -3,15 +3,12 @@ package com.InterPixel.LiCapSa;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ToggleButton;
 
 import com.InterPixel.LiCapSa.GameMain.Suits;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.Games;
 
 import java.util.List;
 
@@ -76,9 +73,6 @@ public class GameActivity extends Activity {
         init();
 
         GameMain.main(new String[]{"ASD", "ASDW"});
-
-        //PlayGames.fap().initialize();
-        //PlayGames.fap().SignIn();
 
     }
 

@@ -36,19 +36,86 @@ tools:context="com.InterPixel.LiCapSa.MainMenuActivity"
             android:layout_weight="19"
             android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
                 android:layout_weight="9"
-                android:adjustViewBounds="true"
-                android:background="#0000"
-                android:hapticFeedbackEnabled="true"
-                android:onClick="startGameActivity"
-                android:scaleType="fitCenter"
-                android:src="@drawable/button_play"
-                android:visibility="visible" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_row="0"
+                    android:layout_weight="9"
+                    android:onClick="invitePlayers"
+                    android:text="Invite"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.658"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.571" />
+
+                <ImageButton
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="9"
+                    android:adjustViewBounds="true"
+                    android:background="#0000"
+                    android:hapticFeedbackEnabled="true"
+                    android:onClick="startGameActivity"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/button_play"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="9"
+                    android:onClick="signIn"
+                    android:text="Sign In"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.341"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.881" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="9"
+                    android:onClick="signOut"
+                    android:text="Sign Out"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.658"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.881" />
+
+            </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
@@ -74,6 +141,7 @@ tools:context="com.InterPixel.LiCapSa.MainMenuActivity"
                 android:layout_weight="15" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
