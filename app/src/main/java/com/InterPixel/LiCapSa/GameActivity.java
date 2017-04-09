@@ -8,12 +8,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ToggleButton;
 
-import com.InterPixel.LiCapSa.GameMain.Suits;
-
 import java.util.List;
 
 
-public class GameActivity extends Activity {
+public class GameActivity extends Activity implements Capsa{
 
     private static GameActivity Instance = null;
 
@@ -71,9 +69,6 @@ public class GameActivity extends Activity {
         slot[13].tg = (ToggleButton) findViewById(R.id.slot13);
 
         init();
-
-        GameMain.main(new String[]{"ASD", "ASDW"});
-
     }
 
     void init(){
@@ -84,8 +79,7 @@ public class GameActivity extends Activity {
         public ToggleButton tg;
         public boolean haveCard;
         public boolean isSelected = false;
-        public Suits suit;
-        public byte number;
+        public Cards card;
     }
 
     public void onSlotClicked(View slotSel){
@@ -119,9 +113,9 @@ public class GameActivity extends Activity {
             }
         }
 
-        switch (slot[slotNumber].suit){
+        switch (slot[slotNumber].card.getSuit()){
             case Diamonds:
-                switch (slot[slotNumber].number){
+                switch (slot[slotNumber].card.getRankinInt()){
                     case 1:
                         return R.drawable.ace_of_diamonds;
                     case 2:
@@ -151,7 +145,7 @@ public class GameActivity extends Activity {
                 }
                 break;
             case Clubs:
-                switch (slot[slotNumber].number){
+                switch (slot[slotNumber].card.getRankinInt()){
                     case 1:
                         return R.drawable.ace_of_clubs;
                     case 2:
@@ -181,7 +175,7 @@ public class GameActivity extends Activity {
                 }
                 break;
             case Hearts:
-                switch (slot[slotNumber].number){
+                switch (slot[slotNumber].card.getRankinInt()){
                     case 1:
                         return R.drawable.ace_of_hearts;
                     case 2:
@@ -211,7 +205,7 @@ public class GameActivity extends Activity {
                 }
                 break;
             case Spades:
-                switch (slot[slotNumber].number){
+                switch (slot[slotNumber].card.getRankinInt()){
                     case 1:
                         return R.drawable.ace_of_spades;
                     case 2:
@@ -244,10 +238,9 @@ public class GameActivity extends Activity {
         return R.drawable.red_joker;
     }
 
-    public void assignCard(List<GameMain.Cards> cardsInHand){
+    public void assignCard(List<Cards> cardsInHand){
         for(int i = 0; i < cardsInHand.size() ; i++){
-            slot[i+1].suit = cardsInHand.get(i).suit;
-            slot[i+1].number = cardsInHand.get(i).number;
+            slot[i+1].card = cardsInHand.get(i);
             slot[i+1].tg.setBackgroundResource(whatCardShouldBeHere(slot[i+1].id));
         }
 

@@ -4,7 +4,7 @@ package com.InterPixel.LiCapSa;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidGroupCard extends GameMain {
+public class ValidGroupCard implements Capsa {
 
     public enum Hands{
         Invalid, Single, Pair, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, Dragon
@@ -51,6 +51,8 @@ public class ValidGroupCard extends GameMain {
     }
 
 */
+
+    //sort cards with ascending order, rank first, then suit
     private static List<Cards> sortCard(List<Cards> CardsToBeSorted){
 
         boolean[][] sorter = new boolean[14][5];
@@ -63,13 +65,13 @@ public class ValidGroupCard extends GameMain {
         }
 
         for (int i = 0; i < CardsToBeSorted.size(); i++) {
-            sorter[CardsToBeSorted.get(i).getNumber()][CardsToBeSorted.get(i).getSuit()] = true;
+            sorter[CardsToBeSorted.get(i).getRankinInt()][CardsToBeSorted.get(i).getSuitinInt()] = true;
         }
 
         for (int i = 0; i < sorter.length; i++) {
             for (int j = 0; j < sorter[i].length; j++){
                 if ( sorter[i][j] ){
-                    sortedCards.add(new Cards(Suits.values()[j], (byte) i));
+                    sortedCards.add(new Cards(j,i));
                 }
             }
         }

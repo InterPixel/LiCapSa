@@ -5,7 +5,7 @@ android {
         MyKey {
             keyAlias 'LiCapSa'
             keyPassword 'akuanaksakaw'
-            storeFile file('D:/Julius/Projects/LiCapSa/KeyStoreCertificate.jks')
+            storeFile file('F:/Renziera/Project/LiCapSa/KeyStoreCertificate.jks')
             storePassword 'akuanaksakaw'
         }
     }
