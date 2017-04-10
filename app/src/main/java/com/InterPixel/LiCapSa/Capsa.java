@@ -45,6 +45,10 @@ public interface Capsa {
         }
     }
 
+    enum Hands{
+        Invalid, Single, Pair, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, Dragon
+    }
+
     enum Players{
         localPlayer(1), noobAI(2), easyAI(3), hardAI(4), insaneAI(5), onlinePlayer(6);
 
@@ -67,8 +71,18 @@ public interface Capsa {
     class Cards{
 
         //properties defined private for better encapsulation
-        private Suits suit;
-        private Ranks rank;
+        private final Suits suit;
+        private final Ranks rank;
+
+        public static int numberOfShiki;
+
+        public static void resetShikiCount(){
+            numberOfShiki = 0;
+        }
+
+        public static void shikiHappened(){
+            numberOfShiki++;
+        }
 
         //Constructor for making a card
         Cards(Suits mSuit, Ranks mRank){
@@ -101,6 +115,26 @@ public interface Capsa {
             return rank.getInt();
         }
 
+        int getRealValue(){
+            int value;
+            value = rank.getInt() - 2;
+            if(value <= 0){
+                value = 13 + value;
+            }
+            return value;
+        }
+
+        int getCurrentValue(){
+            int value;
+            value = (this.getRankinInt() - 2) + numberOfShiki;
+            if ( value > 13 ){
+                value = value % 13;
+            }else if(value <= 0){
+                value = 13 + value;
+            }
+            return value;
+        }
+
     }
 
     class Tools{
@@ -108,4 +142,5 @@ public interface Capsa {
             Log.d(TAG, "debug: " + msg);
         }
     }
+
 }

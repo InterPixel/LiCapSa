@@ -105,5 +105,28 @@ public class GameManager implements Capsa {
         return -1; //berarti error
     }
 
+    private void summonAI(Players[] players){
+
+        int numberOfNoobAI = 0;
+        int numberOfEasyAI = 0;
+        int numberOfHardAI = 0;
+        int numberOfInsaneAI = 0;
+
+        for (int i = 0; i < players.length; i++) {
+            if ( players[i] == Players.noobAI ){
+                numberOfNoobAI++;
+            }else if ( players[i] == Players.easyAI ){
+                numberOfEasyAI++;
+            }else  if ( players[i] == Players.hardAI ){
+                numberOfHardAI++;
+            }else if ( players[i] == Players.insaneAI ){
+                numberOfInsaneAI++;
+            }
+        }
+
+        AI[] AIs = new AI[5];
+        //AIs[1] = new AI_Hard();
+
+    }
 
 }
